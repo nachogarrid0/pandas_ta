@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pandas-ta"
+name = "pandas-ta-openbb"
 version = "0.4.21"
 description = "Fork of pandas-ta for use with NumPy 2 and OpenBB."
 authors = ["Kevin Johnson <appliedmathkj@gmail.com>"]
