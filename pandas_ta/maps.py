@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import importlib
+import importlib.metadata
 from importlib.util import find_spec
 from pathlib import Path
 
