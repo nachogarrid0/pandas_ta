@@ -1,13 +1,26 @@
 # -*- coding: utf-8 -*-
-import importlib
-import importlib.metadata
+import importlib               # (puede quedar por si lo usas en otra parte)
+
+# ---------------------------------------------------------------------------
+# 1) Importar *explícitamente* el sub-módulo `metadata`.
+#    · En Py ≥ 3.8 existe en la stdlib.
+#    · En Py < 3.8 recurrimos al back-port `importlib_metadata`.
+# ---------------------------------------------------------------------------
+try:
+    from importlib import metadata as importlib_metadata          # Py 3.8+
+except ImportError:                                               # Py < 3.8
+    import importlib_metadata                                     # type: ignore
+
 from importlib.util import find_spec
 from pathlib import Path
 
 from pandas_ta._typing import Dict, IntFloat, ListStr
 
-_dist = str(importlib.metadata.distribution("pandas-ta-openbb"))
-_version = importlib.metadata.version("pandas-ta-openbb")
+# ---------------------------------------------------------------------------
+# 2) Usar `importlib_metadata` (en lugar de `importlib.metadata`) aquí abajo.
+# ---------------------------------------------------------------------------
+_dist = str(importlib_metadata.distribution("pandas-ta-openbb"))
+_version = importlib_metadata.version("pandas-ta-openbb")
 try:
     # Normalize case for Windows systems
     _here = Path(_dist) / __file__
